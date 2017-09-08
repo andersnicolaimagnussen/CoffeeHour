@@ -1,0 +1,35 @@
+﻿@model CoffeeHour.Models.GuestResponse
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+
+<form asp-action="CoffeeHour" method="post">
+    <p>Vi ønsker å se om du har det som kreves for å bli med på Coffee Hour</p>
+    <p>
+        <label asp-for="Name">Tast inn navnet ditt</label>
+        <input asp-for="Name"/>
+    </p>
+    <p>
+        <label asp-for="Email">Tast inn din Email</label>
+        <input asp-for="Email"/>
+    </p>
+    <p>
+        <label asp-for="Phone">Tast inn ditt telefon nummer</label>
+        <input asp-for="Phone"/>
+    </p>
+    <p>
+        <select asp-for="WillAttend">
+            <option value="">Velg et valg</option>
+            <option value="true">Ja, jeg kommer</option>
+            <option value="false">Nei, jeg kommer ikke</option>
+        </select>
+    </p>
+    <button type="submit">Send inn</button>
+
+
+</form>
+

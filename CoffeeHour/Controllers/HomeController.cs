@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoffeeHour.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoffeeHour.Controllers
@@ -30,6 +31,33 @@ namespace CoffeeHour.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ViewResult CoffeeHour()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ViewResult CoffeeHour(GuestResponse guestResponse)
+        {
+            if (ModelState.IsValid)
+            {
+                Repository.AddResponse(guestResponse);
+                return View("Thanks", guestResponse);
+            }
+            else
+            {
+                //there is a validation error
+                return View();
+            }
+            
+            
+        }
+
+        public ViewResult ListResponses()
+        {
+            return View(Repository.Responses.Where(x => x.WillAttend == true));
         }
     }
 }
